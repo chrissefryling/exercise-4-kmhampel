@@ -1,8 +1,8 @@
 /*
- * Group Members:
+ * Group Members: Katelyn Hampel
  * Assignment: Exercise 4
  * Lab Instructor: Domenick Poster
- * Date:
+ * Date: October 2, 2017
  * 
  * Purpose: Abstract and concrete classes. Inheritance. Static and non-static members.
  */
@@ -34,3 +34,41 @@ Instance Variables:
 	the "super" identifier.  Super refers to a class's superclass.
 	*******************************************************************************/
 
+public class CheckingAccount extends Account {
+	
+	private static final double PENALTY = 35.00;
+	
+	private double minBalance;
+
+	public CheckingAccount(int accountNo, String lastName, String firstName,
+			double balance, double minBalance) {
+		super(accountNo, lastName, firstName, balance);
+		this.minBalance = minBalance;
+	}
+	// determine how withdrawl will work here
+		// if you perform withdrawl and go under the minBalance  = hit them with the penalty.
+	
+	public void withdrawl(double amount){
+		if (getBalance()  > minBalance){
+			super.withdrawl(amount);
+		}
+		else{
+			double tempBalance = super.getBalance();
+			tempBalance = tempBalance - PENALTY;
+			super.setBalance(tempBalance);
+			throw new withdrawlException("You have withdrawled too much and will be charges a penalty of $35.00");
+		}
+	}
+	
+	// set minimum balance => most minimum balances are $100 (at least for my bank)
+	
+	
+	public boolean checkingMinimumBalance(){
+		
+		
+		
+		
+		return false;
+	}
+	
+}
