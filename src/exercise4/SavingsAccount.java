@@ -1,14 +1,14 @@
 /*
- * Group Members:
+ * Group Members: Katelyn Hampel
  * Assignment: Exercise 4
  * Lab Instructor: Domenick Poster
- * Date:
+ * Date: October 2, 2017
  * 
  * Purpose: Abstract and concrete classes. Inheritance. Static and non-static members.
  */
 
 package exercise4;
-
+import java.lang.Math;
 /*******************************************************************************
 
 This class is a subclass of the class Account.  It is intended to represent
@@ -33,3 +33,31 @@ Instance Variables:
 	the "super" identifier.  Super refers to a class's superclass.
 	
 	*******************************************************************************/
+
+public class SavingsAccount extends Account{
+
+		private double interestRate;
+	
+	
+		public SavingsAccount(int accountNo, String lastName, String firstName,
+				double balance, double interestRate) {
+			super(accountNo, lastName, firstName, balance);
+			
+			this.interestRate = interestRate;
+			
+		}
+	
+	
+		public double compoundingInterest(int numberOfTimesCompounded, int time){
+			double tempBalance = this.getBalance();
+			
+			tempBalance = tempBalance * Math.pow((1 + (interestRate / numberOfTimesCompounded)),
+											(numberOfTimesCompounded * time));
+		
+			
+			return tempBalance;
+		}
+		
+	
+	
+}
